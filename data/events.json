@@ -4,6 +4,7 @@
     "title": "AI 工具入門講座",
     "date": "2026-11-20",
     "location": "資訊館 101",
+    "capacity": 30,
     "registrations": []
   },
   {
@@ -18,6 +19,7 @@
     "title": "畢業專題分享會",
     "date": "2026-12-02",
     "location": "圖書館國際會議廳",
+    "capacity": 3,
     "registrations": [
       { "name": "王小明", "studentId": "410000001", "email": "a@example.edu" },
       { "name": "林小華", "studentId": "410000002", "email": "b@example.edu" }

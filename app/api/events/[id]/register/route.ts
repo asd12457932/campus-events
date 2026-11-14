@@ -1,4 +1,4 @@
-import { errorResponse, findEvent, toPublic } from '../../../../../lib/events.ts';
+import { errorResponse, findEvent, isFull, toPublic } from '../../../../../lib/events.ts';
 import { getStore } from '../../../../../lib/store.ts';
 
 type Context = { params: Promise<{ id: string }> };
@@ -15,6 +15,9 @@ export async function POST(req: Request, { params }: Context): Promise<Response>
   const { name, studentId, email } = body ?? {};
   if (!name || !studentId || !email) {
     return errorResponse(400, 'name, studentId and email are required');
+  }
+  if (isFull(event)) {
+    return errorResponse(409, 'Event is full');
   }
   if (event.registrations.some((r) => r.studentId === studentId)) {
     return errorResponse(409, 'Already registered');
