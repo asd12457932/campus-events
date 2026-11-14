@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import CancelForm from '../../../components/CancelForm.tsx';
 import RegisterForm from '../../../components/RegisterForm.tsx';
 import { findEvent, toPublic } from '../../../lib/events.ts';
 import { getStore } from '../../../lib/store.ts';
@@ -31,6 +32,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
           </p>
         ))}
       <RegisterForm eventId={event.id} disabled={full} />
+      <CancelForm eventId={event.id} />
     </section>
   );
 }

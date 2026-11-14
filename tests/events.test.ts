@@ -5,6 +5,7 @@ import type { Event } from '../lib/types.ts';
 import { GET as listEvents } from '../app/api/events/route.ts';
 import { GET as getEvent } from '../app/api/events/[id]/route.ts';
 import { POST as register } from '../app/api/events/[id]/register/route.ts';
+import { DELETE as cancel } from '../app/api/events/[id]/registrations/[studentId]/route.ts';
 
 // 每個測試都用一份全新的記憶體資料，不會動到 data/events.json。
 const fixture: Event[] = [
@@ -89,5 +90,29 @@ describe('POST /api/events/:id/register', () => {
     const res = await register(post(student), ctx(2));
     assert.equal(res.status, 201);
     assert.equal((await res.json()).remainingSeats, null);
+  });
+});
+
+describe('DELETE /api/events/:id/registrations/:studentId', () => {
+  const cancelCtx = (id: number, studentId: string) => ({ params: Promise.resolve({ id: String(id), studentId }) });
+  const del = () => new Request('http://localhost/api', { method: 'DELETE' });
+
+  it('cancels a registration', async () => {
+    const res = await cancel(del(), cancelCtx(2, '410000001'));
+    assert.equal(res.status, 200);
+    assert.equal((await res.json()).registeredCount, 0);
+  });
+
+  it('frees a seat so someone else can register', async () => {
+    assert.equal((await cancel(del(), cancelCtx(3, '410000001'))).status, 200);
+    const res = await register(post(student), ctx(3));
+    assert.equal(res.status, 201);
+    assert.equal((await res.json()).remainingSeats, 0);
+  });
+
+  it('returns 404 when the registration does not exist', async () => {
+    const res = await cancel(del(), cancelCtx(1, '999999999'));
+    assert.equal(res.status, 404);
+    assert.deepEqual(await res.json(), { error: 'Registration not found' });
   });
 });
