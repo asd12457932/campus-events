@@ -7,7 +7,7 @@ const empty = { name: '', studentId: '', email: '' };
 
 type Message = { type: 'success' | 'error'; text: string };
 
-export default function RegisterForm({ eventId }: { eventId: number }) {
+export default function RegisterForm({ eventId, disabled = false }: { eventId: number; disabled?: boolean }) {
   const router = useRouter();
   const [form, setForm] = useState(empty);
   const [message, setMessage] = useState<Message | null>(null);
@@ -49,6 +49,7 @@ export default function RegisterForm({ eventId }: { eventId: number }) {
       </label>
       <button
         type="submit"
+        disabled={disabled}
         className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-400"
       >
         送出報名

@@ -16,6 +16,17 @@ const fixture: Event[] = [
     location: 'B201',
     registrations: [{ name: '王小明', studentId: '410000001', email: 'a@example.edu' }],
   },
+  {
+    id: 3,
+    title: '小型工作坊',
+    date: '2026-12-10',
+    location: 'C301',
+    capacity: 2,
+    registrations: [
+      { name: '王小明', studentId: '410000001', email: 'a@example.edu' },
+      { name: '林小華', studentId: '410000002', email: 'b@example.edu' },
+    ],
+  },
 ];
 
 beforeEach(() => {
@@ -38,7 +49,7 @@ describe('GET /api/events', () => {
     const res = listEvents();
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.equal(body.length, 2);
+    assert.equal(body.length, 3);
     assert.equal(body[1].registeredCount, 1);
     assert.equal(body[1].registrations, undefined);
   });
@@ -66,5 +77,17 @@ describe('POST /api/events/:id/register', () => {
   it('rejects duplicate registration with 409', async () => {
     const res = await register(post({ name: '王小明', studentId: '410000001', email: 'a@example.edu' }), ctx(2));
     assert.equal(res.status, 409);
+  });
+
+  it('rejects registration when full', async () => {
+    const res = await register(post(student), ctx(3));
+    assert.equal(res.status, 409);
+    assert.deepEqual(await res.json(), { error: 'Event is full' });
+  });
+
+  it('allows registration when capacity is not set', async () => {
+    const res = await register(post(student), ctx(2));
+    assert.equal(res.status, 201);
+    assert.equal((await res.json()).remainingSeats, null);
   });
 });
