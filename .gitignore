@@ -7,3 +7,19 @@ next-env.d.ts
 .env.*
 !.env.example
 .DS_Store
+
+# Next.js / TypeScript build artifacts
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Logs & coverage
+*.log
+npm-debug.log*
+pnpm-debug.log*
+coverage/
+
+# Editor
+.vscode/
+.idea/
