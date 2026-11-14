@@ -12,12 +12,14 @@
 ### Lab 0｜環境準備
 
 ```bash
-node -v                 # v20 以上
+node -v                 # v22.18 以上（建議 v24）
 git --version
 claude --version
+npm install -g pnpm     # 還沒有 pnpm 的話
+git clone https://github.com/asd12457932/campus-events.git
 cd campus-events
-npm install
-npm test                # Tests 5 passed (5)
+pnpm install
+pnpm test               # 最後看到 pass 5、fail 0
 ```
 
 ### Lab 1｜第一次啟動 claude
@@ -54,7 +56,7 @@ claude
 ### Lab 4｜工具呼叫與權限
 
 ```
-請執行 npm test，並告訴我有幾個測試、是否全部通過。
+請執行 pnpm test，並告訴我有幾個測試、是否全部通過。
 ```
 
 出現權限詢問時，先看清楚它要執行什麼，再核准。
@@ -87,17 +89,17 @@ claude
 
 ```
 目標：活動可設定名額上限，額滿後無法報名。
-背景：API 在 server/routes/events.js，資料在 server/data/events.json。
+背景：API 在 app/api/events/，資料在 data/events.json。
 限制：不要新增套件；不要修改其他 API 的回應格式。
 驗收：額滿時 POST /api/events/:id/register 回 409；
-      活動頁顯示剩餘名額與「已額滿」；npm test 全部通過。
+      活動頁顯示剩餘名額與「已額滿」；pnpm test 全部通過。
 請先列出計畫，等我確認後再修改。
 ```
 
 ### Lab 8｜審查計畫（HUMAN）
 
 對照清單：
-- [ ] 計畫列出的檔案都和需求相關？（例如 `styles.css`、`package.json` 通常不需要改）
+- [ ] 計畫列出的檔案都和需求相關？（例如 `globals.css`、`layout.tsx`、`package.json` 通常不需要改）
 - [ ] 沒有新增套件？
 - [ ] 有處理「活動沒有設定 capacity」的情況？
 - [ ] 有新增測試？
@@ -106,7 +108,7 @@ claude
 
 ```
 計畫大致可以，兩個修改：
-1. 不要修改 styles.css，沿用既有樣式。
+1. 不要修改 globals.css 與 layout.tsx，沿用既有樣式。
 2. capacity 未設定的活動視為不限名額，並為這個情況加一個測試。
 修改計畫後再給我看一次。
 ```
@@ -127,27 +129,27 @@ git status              # 改到的檔案，是不是都在計畫裡？
 ### Lab 10｜測試 + 手動驗證
 
 ```bash
-npm test
-npm run dev
+pnpm test
+pnpm dev
 ```
 
-瀏覽器打開 http://localhost:5173 → 進入一個有名額的活動 → 報名到額滿 → 再報名一次應該被擋下，並顯示「已額滿」。
+瀏覽器打開 http://localhost:3000 → 進入一個有名額的活動 → 報名到額滿 → 再報名一次應該被擋下，並顯示「已額滿」。
 
-重設報名資料：`git restore server/data/events.json`（注意：如果 Agent 在這個檔案加了 capacity，restore 會一起還原掉，請改成手動刪掉報名資料）。
+重設報名資料：`git restore data/events.json`（注意：如果 Agent 在這個檔案加了 capacity，restore 會一起還原掉，請改成手動刪掉報名資料）。
 
 ### Lab 11｜證明測試有效（HUMAN）
 
 1. 找到判斷「額滿」的那一行（例如 `registrations.length >= capacity`）。
 2. **自己**把邊界改錯一格（例如 `>=` 改成 `>`），存檔。
-3. `npm test` → **必須失敗**。如果還是通過，代表沒有測試在檢查邊界。
+3. `pnpm test` → **必須失敗**。如果還是通過，代表沒有測試在檢查邊界。
 4. 請 Agent 解釋：
 
 ```
-npm test 有一個測試失敗。
+pnpm test 有一個測試失敗。
 請先解釋失敗的原因與你的判斷依據，不要直接修改程式碼。
 ```
 
-5. 自己改回來，`npm test` 再次通過。
+5. 自己改回來，`pnpm test` 再次通過。
 
 ### Lab 12｜git diff 逐檔審查（HUMAN）
 
@@ -195,10 +197,10 @@ git log --oneline
 
 ```
 目標：新增取消報名 DELETE /api/events/:id/registrations/:studentId
-背景：參考既有的報名 API（server/routes/events.js）
+背景：參考既有的報名 API（app/api/events/[id]/register/route.ts）
 限制：不新增套件；只改報名相關的前後端與測試
 驗收：取消後學號不在名單中；不存在的報名回 404；
-      前端有取消按鈕；npm test 通過
+      前端有取消按鈕；pnpm test 通過
 請先提出計畫，等我確認後再實作。
 ```
 
@@ -208,7 +210,7 @@ git log --oneline
 
 ### B3｜驗證：照上午 Lab 10–11
 
-`npm test` → 手動操作（報名 → 取消 → 再報名）→ 自己改壞一行，確認測試會失敗 → 改回來。
+`pnpm test` → 手動操作（報名 → 取消 → 再報名）→ 自己改壞一行，確認測試會失敗 → 改回來。
 
 ### B4｜Commit：照上午 Lab 12–13
 
@@ -236,8 +238,8 @@ git log --oneline
 **A3｜重構**
 
 ```
-請提出將 server/routes/events.js 中的報名邏輯
-抽到 server/services/ 的重構計畫。
+請提出將 app/api/events/[id]/register/route.ts 中的報名邏輯
+抽到 lib/registrations.ts 的重構計畫。
 重構後 API 行為與測試結果必須完全相同。
 ```
 
@@ -246,7 +248,7 @@ git log --oneline
 ```
 請為取消報名 API 撰寫測試：
 成功取消、取消不存在的報名、取消後名額恢復。
-使用既有的 Vitest + Supertest 設定。
+使用既有的 node:test 測試寫法（tests/events.test.ts）。
 ```
 
 ---

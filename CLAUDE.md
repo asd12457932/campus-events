@@ -1,22 +1,25 @@
 # campus-events — 校園活動報名系統
 
 ## Tech stack
-- Client: Vite + React (client/)
-- Server: Express (server/)
-- Data: JSON 檔 (server/data/)
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Data: JSON 檔 (data/)
 
 ## Commands
-- npm run dev   # 同時啟動前後端
-- npm test      # Vitest + Supertest
+- pnpm dev        # 啟動開發伺服器
+- pnpm test       # node:test
+- pnpm typecheck  # tsc
 
 ## Structure
-- server/routes/  API 路由
-- tests/          後端測試
+- app/api/  API 路由
+- lib/      資料存取與共用邏輯
+- tests/    API 測試
 
 ## Rules
 - 新增依賴前必須先詢問
 - API 錯誤一律回傳 { error: string }
 - 修改 API 時同步更新 tests/
+- 相對路徑 import 要寫 .ts / .tsx 副檔名
 
 ## Definition of Done
-- npm test 全部通過才回報完成
+- pnpm test 與 pnpm typecheck 全部通過才回報完成
