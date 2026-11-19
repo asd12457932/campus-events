@@ -1,1 +1,37 @@
 @import 'tailwindcss';
+
+/* CampusHub Design Tokens — 定義見 design/04-tokens.md
+   程式裡只用這裡的語意名稱（bg-primary、text-muted…），不要再寫色碼。 */
+@theme {
+  /* 顏色角色 */
+  --color-primary: #2f6bea; /* 主要按鈕、連結 */
+  --color-primary-hover: #2557c4;
+  --color-text: #1f2433; /* 主要文字 */
+  --color-muted: #5b6275; /* 次要文字：日期、地點、欄位名稱 */
+  --color-success: #0f7a4f; /* 可報名、成功訊息 */
+  --color-success-soft: #e6f6ee;
+  --color-warning: #9a5b00; /* 即將額滿 */
+  --color-warning-soft: #fff3dd;
+  --color-danger: #b83232; /* 已額滿、錯誤 */
+  --color-danger-soft: #fdebeb;
+
+  /* 介面底色與線條 */
+  --color-page: #f4f5f8;
+  --color-surface: #ffffff;
+  --color-line: #e2e5ec;
+  --color-disabled: #eef0f4;
+
+  /* 字級：4 階 */
+  --text-caption: 0.875rem; /* 14px 日期、地點、標籤 */
+  --text-caption--line-height: 1.4;
+  --text-body: 1rem; /* 16px 內文、按鈕、輸入框 */
+  --text-body--line-height: 1.5;
+  --text-title: 1.25rem; /* 20px 卡片標題 */
+  --text-title--line-height: 1.4;
+  --text-heading: 1.75rem; /* 28px 頁面標題 */
+  --text-heading--line-height: 1.3;
+
+  /* 圓角 */
+  --radius-control: 0.5rem; /* 按鈕、輸入框 */
+  --radius-card: 0.75rem; /* 卡片 */
+}

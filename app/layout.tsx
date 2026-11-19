@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="zh-Hant">
-      <body className="min-h-screen bg-[#F3F4F6] text-[#6B7280]">
-        <div className="mx-auto max-w-3xl px-2 py-4">
-          <header className="mb-4 flex items-baseline justify-between">
-            <Link href="/" className="text-lg font-bold text-[#1D4ED8]">
+      <body className="min-h-screen bg-page text-body text-text antialiased">
+        <div className="mx-auto max-w-3xl px-4 py-6">
+          <header className="mb-6 flex items-baseline justify-between">
+            <Link href="/" className="text-title font-bold text-primary">
               CampusHub
             </Link>
-            <span className="text-xs text-[#9CA3AF]">活動列表</span>
+            <span className="text-caption text-muted">活動列表</span>
           </header>
           <main>{children}</main>
         </div>

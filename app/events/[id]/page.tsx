@@ -15,14 +15,14 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
   const full = event.remainingSeats === 0;
 
   return (
-    <section className="rounded border border-[#E5E7EB] bg-white p-3 text-sm">
-      <Link href="/" className="text-xs text-[#3B82F6]">
+    <section className="rounded-card border border-line bg-surface p-4 text-body">
+      <Link href="/" className="text-caption text-primary">
         ← 回到列表
       </Link>
-      <p className="mt-2">{event.title}</p>
-      <p>日期：{event.date}</p>
-      <p className="text-[#9CA3AF]">地點：{event.location}</p>
-      <p className="text-[#9CA3AF]">
+      <h1 className="mt-2 text-title font-bold">{event.title}</h1>
+      <p className="text-muted">日期：{event.date}</p>
+      <p className="text-muted">地點：{event.location}</p>
+      <p className="text-muted">
         名額：{event.registeredCount} / {event.capacity ?? '不限'}
       </p>
       <div className="mt-3 grid grid-cols-2 gap-2">

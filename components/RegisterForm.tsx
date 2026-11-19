@@ -31,24 +31,24 @@ export default function RegisterForm({ eventId, disabled = false }: { eventId: n
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-1 rounded border border-[#E5E7EB] p-2">
+    <form onSubmit={handleSubmit} className="grid gap-1 rounded-card border border-line p-2">
       <p>報名</p>
-      <label className="grid text-xs text-[#9CA3AF]">
+      <label className="grid text-caption text-muted">
         姓名
-        <input value={form.name} onChange={update('name')} className="rounded-sm border border-[#E5E7EB] px-1 py-0.5 text-xs" />
+        <input value={form.name} onChange={update('name')} className="rounded-control border border-line px-1 py-0.5 text-body" />
       </label>
-      <label className="grid text-xs text-[#9CA3AF]">
+      <label className="grid text-caption text-muted">
         學號
-        <input value={form.studentId} onChange={update('studentId')} className="rounded-sm border border-[#E5E7EB] px-1 py-0.5 text-xs" />
+        <input value={form.studentId} onChange={update('studentId')} className="rounded-control border border-line px-1 py-0.5 text-body" />
       </label>
-      <label className="grid text-xs text-[#9CA3AF]">
+      <label className="grid text-caption text-muted">
         Email
-        <input value={form.email} onChange={update('email')} className="rounded-sm border border-[#E5E7EB] px-1 py-0.5 text-xs" />
+        <input value={form.email} onChange={update('email')} className="rounded-control border border-line px-1 py-0.5 text-body" />
       </label>
-      <button type="submit" disabled={disabled} className="rounded-sm bg-[#2563EB] px-2 py-0.5 text-xs text-white disabled:bg-[#D1D5DB]">
+      <button type="submit" disabled={disabled} className="rounded-control bg-primary px-2 py-0.5 text-body text-white disabled:bg-disabled disabled:text-muted">
         送出
       </button>
-      {message && <p className="text-xs text-[#9CA3AF]">{message}</p>}
+      {message && <p className="text-caption text-muted">{message}</p>}
     </form>
   );
 }
