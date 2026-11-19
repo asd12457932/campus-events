@@ -14,6 +14,7 @@
 - app/api/  API 路由
 - lib/      資料存取與共用邏輯
 - tests/    API 測試
+- design/   UI/UX 工作坊的設計文件（問題、流程、Token、驗收）
 
 ## Rules
 - 新增依賴前必須先詢問

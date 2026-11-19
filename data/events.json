@@ -1,28 +1,114 @@
 [
   {
     "id": 1,
-    "title": "AI 工具入門講座",
-    "date": "2026-11-20",
-    "location": "資訊館 101",
+    "title": "AI 工作坊入門",
+    "date": "2026-11-28 19:00",
+    "location": "綜合大樓 301",
     "capacity": 30,
-    "registrations": []
+    "registrations": [
+      { "name": "林小華", "studentId": "411000001", "email": "s00001@example.edu" },
+      { "name": "陳雅婷", "studentId": "411000002", "email": "s00002@example.edu" },
+      { "name": "李冠宇", "studentId": "411000003", "email": "s00003@example.edu" },
+      { "name": "張怡君", "studentId": "411000004", "email": "s00004@example.edu" },
+      { "name": "黃家豪", "studentId": "411000005", "email": "s00005@example.edu" },
+      { "name": "吳佳穎", "studentId": "411000006", "email": "s00006@example.edu" },
+      { "name": "劉柏翰", "studentId": "411000007", "email": "s00007@example.edu" },
+      { "name": "蔡宜庭", "studentId": "411000008", "email": "s00008@example.edu" },
+      { "name": "楊承恩", "studentId": "411000009", "email": "s00009@example.edu" },
+      { "name": "許思妤", "studentId": "411000010", "email": "s00010@example.edu" },
+      { "name": "鄭子晴", "studentId": "411000011", "email": "s00011@example.edu" },
+      { "name": "謝彥廷", "studentId": "411000012", "email": "s00012@example.edu" },
+      { "name": "郭詩涵", "studentId": "411000013", "email": "s00013@example.edu" },
+      { "name": "洪宗翰", "studentId": "411000014", "email": "s00014@example.edu" },
+      { "name": "曾品妤", "studentId": "411000015", "email": "s00015@example.edu" },
+      { "name": "王俊傑", "studentId": "411000016", "email": "s00016@example.edu" },
+      { "name": "林欣怡", "studentId": "411000017", "email": "s00017@example.edu" },
+      { "name": "陳哲瑋", "studentId": "411000018", "email": "s00018@example.edu" },
+      { "name": "李郁婷", "studentId": "411000019", "email": "s00019@example.edu" },
+      { "name": "張建宏", "studentId": "411000020", "email": "s00020@example.edu" },
+      { "name": "黃筱涵", "studentId": "411000021", "email": "s00021@example.edu" },
+      { "name": "吳育誠", "studentId": "411000022", "email": "s00022@example.edu" },
+      { "name": "劉采潔", "studentId": "411000023", "email": "s00023@example.edu" },
+      { "name": "蔡昱辰", "studentId": "411000024", "email": "s00024@example.edu" },
+      { "name": "楊心怡", "studentId": "411000025", "email": "s00025@example.edu" },
+      { "name": "許庭瑋", "studentId": "411000026", "email": "s00026@example.edu" },
+      { "name": "鄭語彤", "studentId": "411000027", "email": "s00027@example.edu" }
+    ]
   },
   {
     "id": 2,
-    "title": "黑客松說明會",
-    "date": "2026-11-25",
-    "location": "活動中心 2F",
-    "registrations": []
+    "title": "社團博覽會",
+    "date": "2026-12-02 12:00",
+    "location": "活動中心廣場",
+    "registrations": [
+      { "name": "蔡思妤", "studentId": "411000040", "email": "s00040@example.edu" },
+      { "name": "楊子晴", "studentId": "411000041", "email": "s00041@example.edu" },
+      { "name": "許彥廷", "studentId": "411000042", "email": "s00042@example.edu" },
+      { "name": "鄭詩涵", "studentId": "411000043", "email": "s00043@example.edu" }
+    ]
   },
   {
     "id": 3,
+    "title": "期末音樂會",
+    "date": "2026-12-10 18:30",
+    "location": "藝文中心演奏廳",
+    "capacity": 200,
+    "registrations": [
+      { "name": "謝小明", "studentId": "411000060", "email": "s00060@example.edu" },
+      { "name": "郭小華", "studentId": "411000061", "email": "s00061@example.edu" },
+      { "name": "洪雅婷", "studentId": "411000062", "email": "s00062@example.edu" },
+      { "name": "曾冠宇", "studentId": "411000063", "email": "s00063@example.edu" },
+      { "name": "王怡君", "studentId": "411000064", "email": "s00064@example.edu" },
+      { "name": "林家豪", "studentId": "411000065", "email": "s00065@example.edu" },
+      { "name": "陳佳穎", "studentId": "411000066", "email": "s00066@example.edu" },
+      { "name": "李柏翰", "studentId": "411000067", "email": "s00067@example.edu" },
+      { "name": "張宜庭", "studentId": "411000068", "email": "s00068@example.edu" },
+      { "name": "黃承恩", "studentId": "411000069", "email": "s00069@example.edu" },
+      { "name": "吳思妤", "studentId": "411000070", "email": "s00070@example.edu" },
+      { "name": "劉子晴", "studentId": "411000071", "email": "s00071@example.edu" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "職涯講座：第一份實習怎麼找",
+    "date": "2026-12-12 14:00",
+    "location": "國際會議廳",
+    "capacity": 5,
+    "registrations": [
+      { "name": "王建宏", "studentId": "411000080", "email": "s00080@example.edu" },
+      { "name": "林筱涵", "studentId": "411000081", "email": "s00081@example.edu" },
+      { "name": "陳育誠", "studentId": "411000082", "email": "s00082@example.edu" },
+      { "name": "李采潔", "studentId": "411000083", "email": "s00083@example.edu" },
+      { "name": "張昱辰", "studentId": "411000084", "email": "s00084@example.edu" }
+    ]
+  },
+  {
+    "id": 5,
     "title": "畢業專題分享會",
-    "date": "2026-12-02",
-    "location": "圖書館國際會議廳",
+    "date": "2026-12-16 13:30",
+    "location": "圖書館 B1 簡報室",
     "capacity": 3,
     "registrations": [
-      { "name": "王小明", "studentId": "410000001", "email": "a@example.edu" },
-      { "name": "林小華", "studentId": "410000002", "email": "b@example.edu" }
+      { "name": "許小明", "studentId": "411000090", "email": "s00090@example.edu" },
+      { "name": "鄭小華", "studentId": "411000091", "email": "s00091@example.edu" }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "桌遊交流夜",
+    "date": "2026-12-18 19:00",
+    "location": "學生活動中心 2F",
+    "capacity": 24,
+    "registrations": [
+      { "name": "張思妤", "studentId": "411000100", "email": "s00100@example.edu" },
+      { "name": "黃子晴", "studentId": "411000101", "email": "s00101@example.edu" },
+      { "name": "吳彥廷", "studentId": "411000102", "email": "s00102@example.edu" },
+      { "name": "劉詩涵", "studentId": "411000103", "email": "s00103@example.edu" },
+      { "name": "蔡宗翰", "studentId": "411000104", "email": "s00104@example.edu" },
+      { "name": "楊品妤", "studentId": "411000105", "email": "s00105@example.edu" },
+      { "name": "許俊傑", "studentId": "411000106", "email": "s00106@example.edu" },
+      { "name": "鄭欣怡", "studentId": "411000107", "email": "s00107@example.edu" },
+      { "name": "謝哲瑋", "studentId": "411000108", "email": "s00108@example.edu" }
     ]
   }
 ]

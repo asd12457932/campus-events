@@ -5,12 +5,10 @@ import { useRouter } from 'next/navigation';
 
 const empty = { name: '', studentId: '', email: '' };
 
-type Message = { type: 'success' | 'error'; text: string };
-
 export default function RegisterForm({ eventId, disabled = false }: { eventId: number; disabled?: boolean }) {
   const router = useRouter();
   const [form, setForm] = useState(empty);
-  const [message, setMessage] = useState<Message | null>(null);
+  const [message, setMessage] = useState('');
 
   const update = (key: keyof typeof empty) => (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm({ ...form, [key]: e.target.value });
@@ -24,37 +22,33 @@ export default function RegisterForm({ eventId, disabled = false }: { eventId: n
     });
     const body = await res.json().catch(() => ({}));
     if (!res.ok) {
-      setMessage({ type: 'error', text: body.error ?? `報名失敗（${res.status}）` });
+      setMessage(body.error ?? `Error ${res.status}`);
       return;
     }
-    setMessage({ type: 'success', text: '報名成功！' });
+    setMessage('OK');
     setForm(empty);
     router.refresh(); // 重新讀取伺服器資料，更新報名人數
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6 grid gap-3 border-t border-slate-200 pt-5">
-      <h3 className="font-semibold">報名</h3>
-      <label className="grid gap-1 text-sm text-slate-600">
+    <form onSubmit={handleSubmit} className="grid gap-1 rounded border border-[#E5E7EB] p-2">
+      <p>報名</p>
+      <label className="grid text-xs text-[#9CA3AF]">
         姓名
-        <input value={form.name} onChange={update('name')} className="rounded-lg border border-slate-300 px-3 py-2 text-base text-slate-900" />
+        <input value={form.name} onChange={update('name')} className="rounded-sm border border-[#E5E7EB] px-1 py-0.5 text-xs" />
       </label>
-      <label className="grid gap-1 text-sm text-slate-600">
+      <label className="grid text-xs text-[#9CA3AF]">
         學號
-        <input value={form.studentId} onChange={update('studentId')} className="rounded-lg border border-slate-300 px-3 py-2 text-base text-slate-900" />
+        <input value={form.studentId} onChange={update('studentId')} className="rounded-sm border border-[#E5E7EB] px-1 py-0.5 text-xs" />
       </label>
-      <label className="grid gap-1 text-sm text-slate-600">
+      <label className="grid text-xs text-[#9CA3AF]">
         Email
-        <input value={form.email} onChange={update('email')} className="rounded-lg border border-slate-300 px-3 py-2 text-base text-slate-900" />
+        <input value={form.email} onChange={update('email')} className="rounded-sm border border-[#E5E7EB] px-1 py-0.5 text-xs" />
       </label>
-      <button
-        type="submit"
-        disabled={disabled}
-        className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-400"
-      >
-        送出報名
+      <button type="submit" disabled={disabled} className="rounded-sm bg-[#2563EB] px-2 py-0.5 text-xs text-white disabled:bg-[#D1D5DB]">
+        送出
       </button>
-      {message && <p className={message.type === 'error' ? 'text-red-600' : 'text-green-600'}>{message.text}</p>}
+      {message && <p className="text-xs text-[#9CA3AF]">{message}</p>}
     </form>
   );
 }

@@ -9,18 +9,19 @@ export default function EventListPage() {
   const events = getStore().load().map(toPublic);
 
   return (
-    <ul className="grid gap-4">
-      {events.map((event) => (
-        <li key={event.id}>
+    <ul className="grid grid-cols-2 gap-2">
+      {events.map((event, i) => (
+        <li key={event.id} className="rounded border border-[#E5E7EB] bg-white p-2 text-sm">
+          <p>{event.title}</p>
+          <p>{event.date}</p>
+          <p className="text-[#9CA3AF]">{event.location}</p>
           <Link
             href={`/events/${event.id}`}
-            className="block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-blue-500"
+            className={`mt-1 inline-block rounded-sm px-1.5 text-xs text-white ${
+              i % 3 === 0 ? 'bg-[#3B82F6]' : i % 3 === 1 ? 'bg-[#2563EB]' : 'bg-[#1D4ED8]'
+            }`}
           >
-            <h2 className="text-lg font-semibold">{event.title}</h2>
-            <p className="mt-1 text-sm text-slate-500">
-              {event.date} · {event.location}
-            </p>
-            <p className="mt-1 text-sm text-slate-500">已報名 {event.registeredCount} 人</p>
+            查看
           </Link>
         </li>
       ))}

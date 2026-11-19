@@ -66,3 +66,8 @@ tests/events.test.ts                 API 測試（node:test，用記憶體資料
 | `lab/done` | 名額上限已 commit（下午的起點） | `git switch lab/done` |
 
 想重設報名資料：`git restore data/events.json`
+
+## UI/UX 工作坊 branch
+
+「AI × UI/UX」工作坊使用 `uiux/*` 系列 branch（`uiux/start` → `uiux/flow` → `uiux/ui` → `uiux/tokens` → `uiux/done`），
+說明與救援方式寫在 [WORKSHOP-UIUX.md](WORKSHOP-UIUX.md)。設計文件存放在 `design/`。
